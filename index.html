@@ -1332,10 +1332,8 @@ footer {
 }
 
 @media (max-width: 520px) {
-  /* On small phones, the rotating line must fit on one line.
-     "Un site performant" is the longest combo (~18 chars).
-     At 350px usable width, we need font-size ≈ 350/18*1.8 ≈ 35px max.
-     Using 8.5vw on a 390px screen = 33px — perfect. */
+  /* On small phones, simplify the rotating word completely.
+     Remove clip-path and complex padding that cause clipping issues. */
   .hero-headline {
     font-size: clamp(32px, 8.5vw, 48px);
   }
@@ -1348,6 +1346,15 @@ footer {
   }
   .hero-headline .rotating-prefix {
     transform: none !important;
+  }
+  .hero-headline .rotating-word {
+    clip-path: none;
+    overflow: hidden;
+    padding: 0.05em 0.1em 0.15em;
+    margin: 0;
+  }
+  .hero-headline .rotating-word__current {
+    top: 0;
   }
   .process-steps { grid-template-columns: 1fr; }
 }
