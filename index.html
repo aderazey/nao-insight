@@ -529,13 +529,12 @@ footer {
   line-height: 1;
   letter-spacing: -0.04em;
 }
-/* Inner block: contains "Un site" + rotating word, both LEFT-aligned.
-   The block itself is centered on the page, but its contents stay flush left
-   so the prefix doesn't shift around as the adjective changes width. */
+/* Inner block: contains "Un site" + rotating word, both LEFT-aligned. */
 .hero-headline .rotating-line__block {
   display: inline-flex;
   align-items: baseline;
   gap: 0.3em;
+  flex-wrap: wrap;
 }
 .hero-headline .rotating-prefix {
   color: var(--ink);
@@ -1308,6 +1307,15 @@ footer {
   .hero-decoration { display: none; }
   .hero-stats { grid-template-columns: 1fr; gap: 28px; }
 
+  /* Rotating line: reduce size and stack on small screens */
+  .hero-headline .rotating-line {
+    font-size: clamp(36px, 8vw, 56px);
+    margin-top: 12px;
+  }
+  .hero-headline .rotating-line__block {
+    gap: 0.25em;
+  }
+
   .problem-grid { grid-template-columns: 1fr; gap: 48px; }
   .problem-item { grid-template-columns: 60px 1fr; gap: 20px; }
 
@@ -1325,7 +1333,20 @@ footer {
 @media (min-width: 901px) and (max-width: 1280px) {
   .process-steps { grid-template-columns: repeat(3, 1fr); }
 }
+
 @media (max-width: 520px) {
+  /* Extra small: stack "Un site" above the adjective */
+  .hero-headline .rotating-line {
+    font-size: clamp(32px, 10vw, 48px);
+  }
+  .hero-headline .rotating-line__block {
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+  }
+  .hero-headline .rotating-prefix {
+    transform: none !important; /* override JS baseline alignment */
+  }
   .process-steps { grid-template-columns: 1fr; }
 }
 </style>
