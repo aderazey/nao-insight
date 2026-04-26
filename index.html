@@ -1332,8 +1332,6 @@ footer {
 }
 
 @media (max-width: 520px) {
-  /* On small phones, simplify the rotating word completely.
-     Remove clip-path and complex padding that cause clipping issues. */
   .hero-headline {
     font-size: clamp(32px, 8.5vw, 48px);
   }
@@ -1347,14 +1345,23 @@ footer {
   .hero-headline .rotating-prefix {
     transform: none !important;
   }
+  /* On mobile: remove ALL the container tricks (clip-path, padding,
+     negative margins, overflow). Make the rotating word a simple
+     inline element. The JS animation still runs but the container
+     doesn't clip it — we rely on a CSS override to disable vertical
+     movement and use fade-only. */
   .hero-headline .rotating-word {
     clip-path: none;
-    overflow: hidden;
-    padding: 0.05em 0.1em 0.15em;
+    overflow: visible;
+    padding: 0;
     margin: 0;
+    display: inline;
+    height: auto;
   }
   .hero-headline .rotating-word__current {
+    position: relative;
     top: 0;
+    display: inline;
   }
   .process-steps { grid-template-columns: 1fr; }
 }
@@ -1811,6 +1818,9 @@ document.querySelectorAll('.magnetic').forEach(el => {
   let running = false;
 
   // ─── 3. ANIMATION KEYFRAMES (smoother spring) ───
+  // Detect mobile to use simpler fade animation
+  const isMobile = () => window.innerWidth <= 520;
+
   const SPRING_IN_KEYFRAMES = [
     { transform: 'translateY(105%)', opacity: 0,    offset: 0 },
     { transform: 'translateY(40%)',  opacity: 0.4,  offset: 0.18 },
@@ -1821,9 +1831,22 @@ document.querySelectorAll('.magnetic').forEach(el => {
     { transform: 'translateY(0.3%)', opacity: 1,    offset: 0.94 },
     { transform: 'translateY(0)',    opacity: 1,    offset: 1 }
   ];
+
+  // Mobile: simple fade, no vertical movement
+  const FADE_IN_KEYFRAMES = [
+    { opacity: 0, offset: 0 },
+    { opacity: 1, offset: 1 }
+  ];
+
   const SPRING_IN_OPTIONS = {
     duration: 1300,
     easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    fill: 'forwards'
+  };
+
+  const FADE_IN_OPTIONS = {
+    duration: 600,
+    easing: 'ease-out',
     fill: 'forwards'
   };
 
@@ -1832,9 +1855,22 @@ document.querySelectorAll('.magnetic').forEach(el => {
     { transform: 'translateY(-30%)',  opacity: 0.6, offset: 0.5 },
     { transform: 'translateY(-110%)', opacity: 0, offset: 1 }
   ];
+
+  // Mobile: simple fade out
+  const FADE_OUT_KEYFRAMES = [
+    { opacity: 1, offset: 0 },
+    { opacity: 0, offset: 1 }
+  ];
+
   const EXIT_OPTIONS = {
     duration: 650,
     easing: 'cubic-bezier(0.5, 0, 0.55, 0.2)',
+    fill: 'forwards'
+  };
+
+  const FADE_OUT_OPTIONS = {
+    duration: 400,
+    easing: 'ease-in',
     fill: 'forwards'
   };
 
@@ -1845,13 +1881,21 @@ document.querySelectorAll('.magnetic').forEach(el => {
     if (running) return;
     running = true;
 
-    const exitAnim = live.animate(EXIT_KEYFRAMES, EXIT_OPTIONS);
+    const mobile = isMobile();
+
+    const exitAnim = live.animate(
+      mobile ? FADE_OUT_KEYFRAMES : EXIT_KEYFRAMES,
+      mobile ? FADE_OUT_OPTIONS : EXIT_OPTIONS
+    );
     await exitAnim.finished;
 
     currentIndex = (currentIndex + 1) % WORDS.length;
     live.textContent = WORDS[currentIndex];
 
-    const enterAnim = live.animate(SPRING_IN_KEYFRAMES, SPRING_IN_OPTIONS);
+    const enterAnim = live.animate(
+      mobile ? FADE_IN_KEYFRAMES : SPRING_IN_KEYFRAMES,
+      mobile ? FADE_IN_OPTIONS : SPRING_IN_OPTIONS
+    );
     await enterAnim.finished;
 
     await new Promise(r => setTimeout(r, DWELL_MS));
