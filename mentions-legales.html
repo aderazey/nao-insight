@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mentions légales — Nao Insight</title>
+<meta name="description" content="Mentions légales de Nao Insight, agence digitale spécialisée dans la création de sites web." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================
+   STUDIO — Design System
+   Bold editorial · Type-driven · Dynamic
+   ============================================ */
+
+:root {
+  --ivory: #F5F1EA;
+  --ivory-deep: #EDE6D8;
+  --ink: #0E0E0E;
+  --ink-soft: #2B2B2B;
+  --ink-mute: #6B6660;
+  --orange: #FF3D71;
+  --orange-deep: #E02560;
+  --line: #0E0E0E1A;
+  --line-dark: #F5F1EA1F;
+
+  --serif: "Plus Jakarta Sans", "Inter Tight", -apple-system, sans-serif;
+  --display: "Space Grotesk", -apple-system, sans-serif;
+  --hero: "Plus Jakarta Sans", "Inter Tight", -apple-system, sans-serif;
+  --sans: "Inter Tight", -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+*::selection { background: var(--orange); color: var(--ivory); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+
+main, header, footer, nav { position: relative; z-index: 2; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(245, 241, 234, 0.82);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo .dot {
+  width: 8px; height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.4; } }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--orange);
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--ink); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 22px;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 100px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.nav-cta:hover { background: var(--orange); transform: translateY(-1px); }
+.nav-cta::after {
+  content: "→";
+  transition: transform 0.3s ease;
+  font-size: 14px;
+}
+.nav-cta:hover::after { transform: translateX(3px); }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--ivory);
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--orange);
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-primary:hover::before { transform: translateY(0); }
+.btn-primary > span { position: relative; z-index: 1; }
+.btn-primary .arrow { display: inline-block; transition: transform 0.4s ease; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: var(--ivory); }
+
+.btn-link {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.btn-link:hover { color: var(--orange); border-color: var(--orange); }
+.link-orange {
+  color: var(--orange);
+  border-bottom: 1.5px solid currentColor;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.link-orange:hover { opacity: 0.7; }
+
+/* ============================================
+   COMMON SECTION ELEMENTS
+   ============================================ */
+section { padding: 140px 0; position: relative; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--orange);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5.5vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  max-width: 18ch;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--orange);
+  font-weight: 500;
+}
+
+/* Decorative big numbers */
+.big-num {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(60px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--orange);
+}
+
+/* ============================================
+   MARQUEE (defilant tech)
+   ============================================ */
+.marquee {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 28px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 60px;
+  animation: scroll-marquee 28s linear infinite;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+}
+.marquee-track .dot-orange {
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@keyframes scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 100px 0 32px;
+  position: relative;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.footer-brand-logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-brand-logo .dot {
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+.footer-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.3;
+  max-width: 28ch;
+  color: rgba(245, 241, 234, 0.85);
+}
+
+.footer-col h5 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-col li {
+  font-size: 14px;
+  color: rgba(245, 241, 234, 0.7);
+  line-height: 1.5;
+}
+.footer-col li a {
+  font-size: 14px;
+  color: rgba(245, 241, 234, 0.7);
+  transition: color 0.3s ease;
+}
+.footer-col li a:hover { color: var(--orange); }
+.footer-address {
+  line-height: 1.4;
+}
+
+.footer-mega {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(56px, 13vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-align: center;
+  padding: 80px 0 40px;
+  color: var(--ivory);
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.footer-mega em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange);
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: rgba(245, 241, 234, 0.55);
+  font-family: var(--display);
+}
+.footer-bottom a { color: rgba(245, 241, 234, 0.55); transition: color 0.3s ease; }
+.footer-bottom a:hover { color: var(--orange); }
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+  nav { padding: 14px 20px; }
+  section { padding: 90px 0; }
+
+  .nav-links {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--ivory);
+    flex-direction: column;
+    padding: 32px 20px;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-200%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { font-size: 18px; }
+
+  .menu-toggle { display: block; }
+  .nav-cta { display: none; }
+
+  .footer-top { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
+}
+
+@media (max-width: 520px) {
+  .btn { padding: 16px 26px; font-size: 13px; }
+}
+
+</style>
+<style>
+.legal-hero {
+  padding: 160px 0 60px;
+  border-bottom: 1px solid var(--line);
+}
+.legal-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 32px;
+}
+.legal-hero-meta::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--orange);
+}
+.legal-hero h1 {
+  font-family: var(--hero);
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+.legal-hero h1 em { font-style: italic; color: var(--orange); font-weight: 400; }
+.legal-hero p {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.legal-content {
+  padding: 80px 0 140px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.legal-toc {
+  position: sticky;
+  top: 110px;
+  font-family: var(--display);
+  font-size: 13px;
+}
+.legal-toc h5 {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.legal-toc ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.legal-toc a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-left: 16px;
+  border-left: 2px solid var(--line);
+  display: block;
+  transition: all 0.3s ease;
+  line-height: 1.4;
+}
+.legal-toc a:hover {
+  color: var(--orange);
+  border-left-color: var(--orange);
+}
+
+.legal-body {
+  max-width: 70ch;
+}
+.legal-body h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 64px 0 24px;
+  scroll-margin-top: 110px;
+}
+.legal-body h2:first-child { margin-top: 0; }
+.legal-body h2 em { font-style: italic; color: var(--orange); }
+
+.legal-body h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 32px 0 16px;
+}
+
+.legal-body p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.legal-body strong { color: var(--ink); font-weight: 500; }
+
+.legal-body ul {
+  list-style: none;
+  margin: 16px 0 24px;
+  padding: 0;
+}
+.legal-body ul li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  padding-left: 24px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.legal-body ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.legal-body a {
+  color: var(--orange);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+.legal-body a:hover { color: var(--orange-deep); }
+
+.info-card {
+  background: var(--ivory-deep);
+  border-radius: 6px;
+  padding: 28px 32px;
+  margin: 24px 0;
+}
+.info-card p { margin-bottom: 8px; font-size: 15px; }
+.info-card p:last-child { margin-bottom: 0; }
+.info-card .label {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+.info-card .label:first-child { margin-top: 0; }
+
+.last-updated {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--ink-mute);
+}
+
+@media (max-width: 900px) {
+  .legal-hero { padding: 110px 0 40px; }
+  .legal-content { grid-template-columns: 1fr; gap: 32px; padding: 48px 0 80px; }
+  .legal-toc { position: static; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <span class="dot"></span>
+    Nao Insight
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="services.html">Services & Tarifs</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Démarrer un projet</a>
+  <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+</nav>
+
+<main>
+
+  <section class="legal-hero">
+    <div class="container">
+      <div class="legal-hero-meta">Informations légales</div>
+      <h1>Mentions <em>légales</em>.</h1>
+      <p>Conformément aux dispositions des articles 6-III et 19 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), il est porté à la connaissance des utilisateurs du site les informations suivantes.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="legal-content">
+
+      <aside class="legal-toc">
+        <h5>Sommaire</h5>
+        <ul>
+          <li><a href="#editeur">1. Éditeur du site</a></li>
+          <li><a href="#hebergeur">2. Hébergeur</a></li>
+          <li><a href="#propriete">3. Propriété intellectuelle</a></li>
+          <li><a href="#donnees">4. Données personnelles</a></li>
+          <li><a href="#cookies">5. Cookies</a></li>
+          <li><a href="#liens">6. Liens hypertextes</a></li>
+          <li><a href="#responsabilite">7. Responsabilité</a></li>
+          <li><a href="#droit">8. Droit applicable</a></li>
+        </ul>
+      </aside>
+
+      <article class="legal-body">
+
+        <h2 id="editeur">1. Éditeur du site</h2>
+        <p>Le site <strong>nao-insight.fr</strong> (ci-après « le Site ») est édité par :</p>
+
+        <div class="info-card">
+          <span class="label">Raison sociale</span>
+          <p>[VOTRE NOM ET PRÉNOM] — Entrepreneur·e individuel·le</p>
+          <span class="label">Adresse du siège</span>
+          <p>7 Rue des Peupliers<br/>92130 Issy-les-Moulineaux<br/>France</p>
+          <span class="label">Contact</span>
+          <p>Email : <a href="mailto:contact@nao-insight.fr">contact@nao-insight.fr</a><br/>Téléphone : 06 61 20 47 87</p>
+          <span class="label">Identification</span>
+          <p>SIRET : [XXX XXX XXX XXXXX]<br/>Code APE : [62.01Z — Programmation informatique]<br/>TVA intracommunautaire : non applicable, art. 293 B du CGI</p>
+          <span class="label">Directeur·rice de la publication</span>
+          <p>[VOTRE NOM ET PRÉNOM]</p>
+        </div>
+
+        <h2 id="hebergeur">2. Hébergeur</h2>
+        <p>Le Site est hébergé par :</p>
+
+        <div class="info-card">
+          <span class="label">Hébergeur</span>
+          <p>[NOM DE L'HÉBERGEUR — par exemple : Netlify, Inc. / OVH SAS / O2switch SARL]</p>
+          <span class="label">Adresse</span>
+          <p>[ADRESSE DE L'HÉBERGEUR]</p>
+          <span class="label">Site web</span>
+          <p><a href="#">[URL DE L'HÉBERGEUR]</a></p>
+        </div>
+
+        <h2 id="propriete">3. Propriété intellectuelle</h2>
+        <p>L'ensemble du Site, sa structure générale, ainsi que les textes, images, graphismes, sons, vidéos, logos, marques, dénominations sociales, savoir-faire et plus largement tout élément le composant, sont la <strong>propriété exclusive de Nao Insight</strong> ou de ses partenaires.</p>
+        <p>Toute représentation et/ou reproduction et/ou exploitation partielle ou totale des contenus et services proposés par le Site, par quelque procédé que ce soit, sans l'autorisation préalable et écrite de Nao Insight, est strictement interdite et serait susceptible de constituer une <strong>contrefaçon au sens des articles L. 335-2 et suivants du Code de la propriété intellectuelle</strong>.</p>
+        <p>Les marques et logos figurant sur le Site sont des marques déposées par leurs propriétaires respectifs.</p>
+
+        <h2 id="donnees">4. Données personnelles</h2>
+        <p>Nao Insight accorde la plus grande importance à la protection des données personnelles de ses utilisateurs et respecte les dispositions du <strong>Règlement Général sur la Protection des Données (RGPD)</strong> et de la loi « Informatique et Libertés » du 6 janvier 1978 modifiée.</p>
+
+        <h3>Responsable du traitement</h3>
+        <p>Le responsable du traitement des données collectées sur le Site est [VOTRE NOM ET PRÉNOM], joignable à <a href="mailto:contact@nao-insight.fr">contact@nao-insight.fr</a>.</p>
+
+        <h3>Finalités du traitement</h3>
+        <p>Les données collectées via le formulaire de contact sont utilisées exclusivement pour :</p>
+        <ul>
+          <li>Répondre à vos demandes et questions</li>
+          <li>Établir un devis personnalisé</li>
+          <li>Assurer le suivi de la relation commerciale</li>
+        </ul>
+
+        <h3>Base légale</h3>
+        <p>Le traitement repose sur votre <strong>consentement</strong> (art. 6.1.a du RGPD) lors de la soumission du formulaire de contact, et sur l'<strong>exécution de mesures précontractuelles</strong> ou contractuelles (art. 6.1.b du RGPD) pour les demandes liées à un projet.</p>
+
+        <h3>Durée de conservation</h3>
+        <p>Les données collectées sont conservées pendant <strong>3 ans</strong> à compter du dernier contact en l'absence de relation commerciale, ou pendant la durée nécessaire à la gestion du projet et au respect des obligations légales (10 ans pour les documents comptables).</p>
+
+        <h3>Destinataires</h3>
+        <p>Les données ne sont jamais cédées ni vendues à des tiers. Elles peuvent être traitées par des sous-traitants techniques (hébergeur, prestataire d'envoi d'emails) dans le strict cadre de la fourniture du service.</p>
+
+        <h3>Vos droits</h3>
+        <p>Conformément aux articles 15 à 22 du RGPD, vous disposez des droits suivants :</p>
+        <ul>
+          <li>Droit d'accès à vos données</li>
+          <li>Droit de rectification</li>
+          <li>Droit à l'effacement (« droit à l'oubli »)</li>
+          <li>Droit à la limitation du traitement</li>
+          <li>Droit à la portabilité</li>
+          <li>Droit d'opposition</li>
+          <li>Droit de retirer votre consentement à tout moment</li>
+        </ul>
+        <p>Pour exercer ces droits, écrivez à <a href="mailto:contact@nao-insight.fr">contact@nao-insight.fr</a> en justifiant de votre identité. Une réponse vous sera adressée sous un délai maximum d'<strong>un mois</strong>.</p>
+        <p>Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la <strong>CNIL</strong> (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+
+        <h2 id="cookies">5. Cookies</h2>
+        <p>Le Site n'utilise <strong>aucun cookie de pistage publicitaire ni de tracking comportemental</strong>. Seuls des cookies strictement techniques, nécessaires au bon fonctionnement du site, peuvent être déposés. Ces cookies ne nécessitent pas de consentement préalable conformément à la délibération de la CNIL du 17 septembre 2020.</p>
+        <p>Si des outils de mesure d'audience (type analytics) sont déployés ultérieurement, une bannière de consentement sera mise en place et la présente politique mise à jour en conséquence.</p>
+
+        <h2 id="liens">6. Liens hypertextes</h2>
+        <p>Le Site peut contenir des liens vers d'autres sites internet. Nao Insight n'exerce <strong>aucun contrôle sur ces sites tiers</strong> et ne saurait être tenue pour responsable de leur contenu, des éventuels dommages ou pertes liés à leur utilisation, ni de leurs propres pratiques en matière de protection de la vie privée.</p>
+
+        <h2 id="responsabilite">7. Limitation de responsabilité</h2>
+        <p>Nao Insight met tout en œuvre pour assurer l'exactitude et la mise à jour des informations diffusées sur le Site. Toutefois, Nao Insight ne saurait garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition.</p>
+        <p>L'utilisateur reconnaît utiliser ces informations sous sa responsabilité exclusive. Nao Insight ne pourra être tenue responsable des dommages directs ou indirects résultant de l'usage du Site ou de l'impossibilité d'y accéder.</p>
+
+        <h2 id="droit">8. Droit applicable et juridiction compétente</h2>
+        <p>Les présentes mentions légales sont soumises au <strong>droit français</strong>. En cas de litige, et après échec de toute tentative de résolution amiable, les tribunaux français seront seuls compétents.</p>
+
+        <p class="last-updated">Dernière mise à jour : [DATE]</p>
+
+      </article>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-logo"><span class="dot"></span>Nao Insight</div>
+        <p class="footer-tagline">Sites web pour indépendants, artisans et auto-entrepreneurs. <em style="color:var(--orange)">Clairs, élégants, efficaces.</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services & Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:contact@nao-insight.fr">contact@nao-insight.fr</a></li>
+          <li><a href="tel:+33661204787">06 61 20 47 87</a></li>
+          <li class="footer-address">7 Rue des Peupliers<br>92130 Issy-les-Moulineaux</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="cgv.html">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-mega">Nao Insight<em>.</em></div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Nao Insight. Tous droits réservés.</div>
+      <div>Made with care · in France 🇫🇷</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Magnetic hover on .magnetic elements
+document.querySelectorAll('.magnetic').forEach(el => {
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'translate(0, 0)';
+  });
+});
+
+// Rotating word animation (hero H1) — using Web Animations API
+// for guaranteed per-cycle animation reset.
+(function initRotatingWord() {
+  const container = document.querySelector('.rotating-word');
+  if (!container) return;
+
+  // The list of words to cycle through
+  const WORDS = ['clair', 'brandé', 'élégant', 'performant', 'efficace'];
+
+  // Measurement element used at init to lock the container width
+  const measure = container.querySelector('.rotating-word__measure');
+  if (!measure) return;
+
+  // ─── 1. MEASURE: lock to the WIDEST word ───
+  function lockWidth() {
+    let maxW = 0;
+    WORDS.forEach(w => {
+      measure.textContent = w;
+      const width = measure.getBoundingClientRect().width;
+      if (width > maxW) maxW = width;
+    });
+    // +20px safety margin: at large font sizes (up to 144px) some glyphs
+    // (especially "f", "p" in weight 500) overshoot their measured box
+    // by several pixels. Generous margin prevents right-edge clipping.
+    container.style.width = Math.ceil(maxW + 20) + 'px';
+    container.style.height = measure.getBoundingClientRect().height + 'px';
+  }
+
+  lockWidth();
+  window.addEventListener('resize', lockWidth);
+
+  // ─── 2. CREATE the live word element ───
+  measure.style.display = 'none';
+  const live = document.createElement('span');
+  live.className = 'rotating-word__current';
+  live.textContent = WORDS[0];
+  container.appendChild(live);
+
+  // ─── 2b. PIXEL-PERFECT BASELINE ALIGNMENT ───
+  // Browsers calculate flex item baselines unpredictably when items have
+  // different padding/margin. Instead of guessing offsets, we measure the
+  // actual rendered Y-position of the bottom of "Un site" and the bottom
+  // of the rotating word, then translate the prefix by the exact difference.
+  function alignBaselines() {
+    const prefix = document.querySelector('.rotating-prefix');
+    if (!prefix) return;
+
+    // Reset any previous offset so measurements are pure
+    prefix.style.transform = '';
+
+    // Force layout to settle
+    void prefix.offsetHeight;
+
+    // We compare baseline-equivalent positions: the bottom edge of the
+    // visible glyphs of each element. Since both use the same font and
+    // line-height, comparing bottom-of-content is reliable.
+    const prefixRect = prefix.getBoundingClientRect();
+    const liveRect = live.getBoundingClientRect();
+
+    // Difference in vertical position (positive = prefix is higher than word)
+    const offset = liveRect.bottom - prefixRect.bottom;
+
+    // Apply correction: move prefix down by the exact offset
+    if (Math.abs(offset) > 0.5) {
+      prefix.style.transform = `translateY(${offset}px)`;
+    }
+  }
+
+  // Run baseline alignment after layout has fully settled
+  // (fonts loaded, flex items rendered)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      requestAnimationFrame(alignBaselines);
+    });
+  } else {
+    requestAnimationFrame(() => requestAnimationFrame(alignBaselines));
+  }
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(alignBaselines);
+  });
+
+  // Respect reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let currentIndex = 0;
+  let running = false;
+
+  // ─── 3. ANIMATION KEYFRAMES (smoother spring) ───
+  const SPRING_IN_KEYFRAMES = [
+    { transform: 'translateY(105%)', opacity: 0,    offset: 0 },
+    { transform: 'translateY(40%)',  opacity: 0.4,  offset: 0.18 },
+    { transform: 'translateY(-3%)',  opacity: 1,    offset: 0.45 },
+    { transform: 'translateY(-5%)',  opacity: 1,    offset: 0.55 },
+    { transform: 'translateY(2%)',   opacity: 1,    offset: 0.7 },
+    { transform: 'translateY(-1%)',  opacity: 1,    offset: 0.84 },
+    { transform: 'translateY(0.3%)', opacity: 1,    offset: 0.94 },
+    { transform: 'translateY(0)',    opacity: 1,    offset: 1 }
+  ];
+  const SPRING_IN_OPTIONS = {
+    duration: 1300,
+    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    fill: 'forwards'
+  };
+
+  const EXIT_KEYFRAMES = [
+    { transform: 'translateY(0)',     opacity: 1, offset: 0 },
+    { transform: 'translateY(-30%)',  opacity: 0.6, offset: 0.5 },
+    { transform: 'translateY(-110%)', opacity: 0, offset: 1 }
+  ];
+  const EXIT_OPTIONS = {
+    duration: 650,
+    easing: 'cubic-bezier(0.5, 0, 0.55, 0.2)',
+    fill: 'forwards'
+  };
+
+  const DWELL_MS = 2200;
+
+  // ─── 4. ROTATION LOOP ───
+  async function rotate() {
+    if (running) return;
+    running = true;
+
+    const exitAnim = live.animate(EXIT_KEYFRAMES, EXIT_OPTIONS);
+    await exitAnim.finished;
+
+    currentIndex = (currentIndex + 1) % WORDS.length;
+    live.textContent = WORDS[currentIndex];
+
+    const enterAnim = live.animate(SPRING_IN_KEYFRAMES, SPRING_IN_OPTIONS);
+    await enterAnim.finished;
+
+    await new Promise(r => setTimeout(r, DWELL_MS));
+
+    running = false;
+    rotate();
+  }
+
+  // ─── 5. INITIAL DELAY ───
+  setTimeout(() => {
+    live.style.transform = 'translateY(0)';
+    live.style.opacity = '1';
+    rotate();
+  }, 2400);
+})();
+
+</script>
+</body>
+</html>

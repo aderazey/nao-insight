@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Nao Insight</title>
+<meta name="description" content="Discutons de votre projet de site web. Premier échange offert, sans engagement." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================
+   STUDIO — Design System
+   Bold editorial · Type-driven · Dynamic
+   ============================================ */
+
+:root {
+  --ivory: #F5F1EA;
+  --ivory-deep: #EDE6D8;
+  --ink: #0E0E0E;
+  --ink-soft: #2B2B2B;
+  --ink-mute: #6B6660;
+  --orange: #FF3D71;
+  --orange-deep: #E02560;
+  --line: #0E0E0E1A;
+  --line-dark: #F5F1EA1F;
+
+  --serif: "Plus Jakarta Sans", "Inter Tight", -apple-system, sans-serif;
+  --display: "Space Grotesk", -apple-system, sans-serif;
+  --hero: "Plus Jakarta Sans", "Inter Tight", -apple-system, sans-serif;
+  --sans: "Inter Tight", -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+*::selection { background: var(--orange); color: var(--ivory); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+
+main, header, footer, nav { position: relative; z-index: 2; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(245, 241, 234, 0.82);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo .dot {
+  width: 8px; height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.4; } }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--orange);
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--ink); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 22px;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 100px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.nav-cta:hover { background: var(--orange); transform: translateY(-1px); }
+.nav-cta::after {
+  content: "→";
+  transition: transform 0.3s ease;
+  font-size: 14px;
+}
+.nav-cta:hover::after { transform: translateX(3px); }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--ivory);
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--orange);
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-primary:hover::before { transform: translateY(0); }
+.btn-primary > span { position: relative; z-index: 1; }
+.btn-primary .arrow { display: inline-block; transition: transform 0.4s ease; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: var(--ivory); }
+
+.btn-link {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.btn-link:hover { color: var(--orange); border-color: var(--orange); }
+.link-orange {
+  color: var(--orange);
+  border-bottom: 1.5px solid currentColor;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.link-orange:hover { opacity: 0.7; }
+
+/* ============================================
+   COMMON SECTION ELEMENTS
+   ============================================ */
+section { padding: 140px 0; position: relative; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--orange);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5.5vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  max-width: 18ch;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--orange);
+  font-weight: 500;
+}
+
+/* Decorative big numbers */
+.big-num {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(60px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--orange);
+}
+
+/* ============================================
+   MARQUEE (defilant tech)
+   ============================================ */
+.marquee {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 28px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 60px;
+  animation: scroll-marquee 28s linear infinite;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+}
+.marquee-track .dot-orange {
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@keyframes scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 100px 0 32px;
+  position: relative;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.footer-brand-logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-brand-logo .dot {
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+.footer-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.3;
+  max-width: 28ch;
+  color: rgba(245, 241, 234, 0.85);
+}
+
+.footer-col h5 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-col li {
+  font-size: 14px;
+  color: rgba(245, 241, 234, 0.7);
+  line-height: 1.5;
+}
+.footer-col li a {
+  font-size: 14px;
+  color: rgba(245, 241, 234, 0.7);
+  transition: color 0.3s ease;
+}
+.footer-col li a:hover { color: var(--orange); }
+.footer-address {
+  line-height: 1.4;
+}
+
+.footer-mega {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(56px, 13vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-align: center;
+  padding: 80px 0 40px;
+  color: var(--ivory);
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.footer-mega em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange);
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: rgba(245, 241, 234, 0.55);
+  font-family: var(--display);
+}
+.footer-bottom a { color: rgba(245, 241, 234, 0.55); transition: color 0.3s ease; }
+.footer-bottom a:hover { color: var(--orange); }
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+  nav { padding: 14px 20px; }
+  section { padding: 90px 0; }
+
+  .nav-links {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--ivory);
+    flex-direction: column;
+    padding: 32px 20px;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-200%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { font-size: 18px; }
+
+  .menu-toggle { display: block; }
+  .nav-cta { display: none; }
+
+  .footer-top { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
+}
+
+@media (max-width: 520px) {
+  .btn { padding: 16px 26px; font-size: 13px; }
+}
+
+</style>
+<style>
+.contact-main {
+  min-height: calc(100vh - 80px);
+  padding: 140px 0 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-orb {
+  position: absolute;
+  right: -180px;
+  top: 60px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--orange) 0%, var(--orange) 35%, transparent 70%);
+  opacity: 0.13;
+  filter: blur(50px);
+  pointer-events: none;
+  animation: float-orb 14s ease-in-out infinite;
+  z-index: 0;
+}
+.contact-orb.bottom-left {
+  top: auto; right: auto;
+  bottom: 80px;
+  left: -200px;
+  width: 420px;
+  height: 420px;
+  opacity: 0.08;
+  animation-delay: -6s;
+}
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 30px) scale(1.05); }
+}
+
+.contact-main .container { position: relative; z-index: 1; }
+
+.contact-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 40px;
+}
+.contact-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--orange);
+}
+.contact-eyebrow .live {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2.4s ease-in-out infinite;
+  margin-left: 6px;
+}
+@keyframes pulse { 50% { opacity: 0.4; } }
+
+.contact-greeting {
+  font-family: var(--hero);
+  font-weight: 400;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 22ch;
+  margin-bottom: 80px;
+}
+.contact-greeting em {
+  font-style: italic;
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--hero);
+  font-weight: 400;
+  font-size: clamp(36px, 7vw, 108px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 64px;
+  position: relative;
+  transition: color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-email::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 3px;
+  background: var(--ink);
+  transform-origin: right center;
+  transform: scaleX(1);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-email:hover { color: var(--orange); }
+.contact-email:hover::after {
+  background: var(--orange);
+  animation: underline-redraw 0.7s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+@keyframes underline-redraw {
+  0% { transform: scaleX(1); transform-origin: right; }
+  49% { transform: scaleX(0); transform-origin: right; }
+  50% { transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(1); transform-origin: left; }
+}
+.contact-email .arrow {
+  font-size: 0.5em;
+  margin-left: 0.3em;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-email:hover .arrow {
+  transform: translate(8px, -8px);
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0 80px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+  max-width: 880px;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.info-label {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.info-value {
+  font-family: var(--hero);
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.info-value a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.info-value a:hover { color: var(--orange); }
+
+.contact-calendly {
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.calendly-text {
+  flex: 1;
+  min-width: 280px;
+}
+.calendly-text h3 {
+  font-family: var(--hero);
+  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.calendly-text h3 em { font-style: italic; color: var(--orange); }
+.calendly-text p {
+  font-size: 15px;
+  color: var(--ink-mute);
+  line-height: 1.5;
+}
+
+.calendly-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 36px;
+  background: var(--ink);
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.calendly-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--orange);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.calendly-btn:hover::before { transform: translateY(0); }
+.calendly-btn:hover { color: var(--ink); }
+.calendly-btn > span { position: relative; z-index: 1; }
+.calendly-btn .arrow {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+.calendly-btn:hover .arrow { transform: translate(4px, -4px); }
+
+@media (max-width: 900px) {
+  .contact-main { padding: 100px 0 80px; min-height: auto; }
+  .contact-orb, .contact-orb.bottom-left { display: none; }
+  .contact-greeting { margin-bottom: 56px; }
+  .contact-email { margin-bottom: 48px; }
+  .contact-email .arrow { font-size: 0.6em; }
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 32px 0;
+  }
+  .contact-calendly { flex-direction: column; align-items: flex-start; gap: 24px; }
+}
+
+@media (max-width: 540px) {
+  .calendly-btn { width: 100%; justify-content: center; padding: 18px 28px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <span class="dot"></span>
+    Nao Insight
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="services.html">Services & Tarifs</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Démarrer un projet</a>
+  <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+</nav>
+
+<main>
+
+  <section class="contact-main">
+    <div class="contact-orb"></div>
+    <div class="contact-orb bottom-left"></div>
+
+    <div class="container">
+
+      <div class="contact-eyebrow">
+        Disponible <span class="live"></span>
+      </div>
+
+      <h1 class="contact-greeting">
+        Bonjour. Parlons de <em>votre projet</em>.
+      </h1>
+
+      <a href="mailto:contact@nao-insight.fr" class="contact-email">
+        contact@nao-insight.fr<span class="arrow">↗</span>
+      </a>
+
+      <div class="contact-info">
+        <div class="info-block">
+          <span class="info-label">Téléphone</span>
+          <div class="info-value"><a href="tel:+33661204787">06 61 20 47 87</a></div>
+        </div>
+        <div class="info-block">
+          <span class="info-label">Bureau</span>
+          <div class="info-value">
+            7 Rue des Peupliers<br/>
+            92130 Issy-les-Moulineaux
+          </div>
+        </div>
+        <div class="info-block">
+          <span class="info-label">Réponse</span>
+          <div class="info-value">Sous 24 h ouvrées</div>
+        </div>
+      </div>
+
+      <div class="contact-calendly">
+        <div class="calendly-text">
+          <h3>Ou réservez directement <em>30 minutes</em>.</h3>
+          <p>Premier échange offert, sans engagement. Téléphone ou visio, vous choisissez.</p>
+        </div>
+        <a href="https://calendly.com/" class="calendly-btn">
+          <span>Réserver un créneau</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-logo"><span class="dot"></span>Nao Insight</div>
+        <p class="footer-tagline">Sites web pour indépendants, artisans et auto-entrepreneurs. <em style="color:var(--orange)">Clairs, élégants, efficaces.</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services & Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:contact@nao-insight.fr">contact@nao-insight.fr</a></li>
+          <li><a href="tel:+33661204787">06 61 20 47 87</a></li>
+          <li class="footer-address">7 Rue des Peupliers<br>92130 Issy-les-Moulineaux</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="cgv.html">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-mega">Nao Insight<em>.</em></div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Nao Insight. Tous droits réservés.</div>
+      <div>Made with care · in France 🇫🇷</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Magnetic hover on .magnetic elements
+document.querySelectorAll('.magnetic').forEach(el => {
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'translate(0, 0)';
+  });
+});
+
+// Rotating word animation (hero H1) — using Web Animations API
+// for guaranteed per-cycle animation reset.
+(function initRotatingWord() {
+  const container = document.querySelector('.rotating-word');
+  if (!container) return;
+
+  // The list of words to cycle through
+  const WORDS = ['clair', 'brandé', 'élégant', 'performant', 'efficace'];
+
+  // Measurement element used at init to lock the container width
+  const measure = container.querySelector('.rotating-word__measure');
+  if (!measure) return;
+
+  // ─── 1. MEASURE: lock to the WIDEST word ───
+  function lockWidth() {
+    let maxW = 0;
+    WORDS.forEach(w => {
+      measure.textContent = w;
+      const width = measure.getBoundingClientRect().width;
+      if (width > maxW) maxW = width;
+    });
+    // +20px safety margin: at large font sizes (up to 144px) some glyphs
+    // (especially "f", "p" in weight 500) overshoot their measured box
+    // by several pixels. Generous margin prevents right-edge clipping.
+    container.style.width = Math.ceil(maxW + 20) + 'px';
+    container.style.height = measure.getBoundingClientRect().height + 'px';
+  }
+
+  lockWidth();
+  window.addEventListener('resize', lockWidth);
+
+  // ─── 2. CREATE the live word element ───
+  measure.style.display = 'none';
+  const live = document.createElement('span');
+  live.className = 'rotating-word__current';
+  live.textContent = WORDS[0];
+  container.appendChild(live);
+
+  // ─── 2b. PIXEL-PERFECT BASELINE ALIGNMENT ───
+  // Browsers calculate flex item baselines unpredictably when items have
+  // different padding/margin. Instead of guessing offsets, we measure the
+  // actual rendered Y-position of the bottom of "Un site" and the bottom
+  // of the rotating word, then translate the prefix by the exact difference.
+  function alignBaselines() {
+    const prefix = document.querySelector('.rotating-prefix');
+    if (!prefix) return;
+
+    // Reset any previous offset so measurements are pure
+    prefix.style.transform = '';
+
+    // Force layout to settle
+    void prefix.offsetHeight;
+
+    // We compare baseline-equivalent positions: the bottom edge of the
+    // visible glyphs of each element. Since both use the same font and
+    // line-height, comparing bottom-of-content is reliable.
+    const prefixRect = prefix.getBoundingClientRect();
+    const liveRect = live.getBoundingClientRect();
+
+    // Difference in vertical position (positive = prefix is higher than word)
+    const offset = liveRect.bottom - prefixRect.bottom;
+
+    // Apply correction: move prefix down by the exact offset
+    if (Math.abs(offset) > 0.5) {
+      prefix.style.transform = `translateY(${offset}px)`;
+    }
+  }
+
+  // Run baseline alignment after layout has fully settled
+  // (fonts loaded, flex items rendered)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      requestAnimationFrame(alignBaselines);
+    });
+  } else {
+    requestAnimationFrame(() => requestAnimationFrame(alignBaselines));
+  }
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(alignBaselines);
+  });
+
+  // Respect reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let currentIndex = 0;
+  let running = false;
+
+  // ─── 3. ANIMATION KEYFRAMES (smoother spring) ───
+  const SPRING_IN_KEYFRAMES = [
+    { transform: 'translateY(105%)', opacity: 0,    offset: 0 },
+    { transform: 'translateY(40%)',  opacity: 0.4,  offset: 0.18 },
+    { transform: 'translateY(-3%)',  opacity: 1,    offset: 0.45 },
+    { transform: 'translateY(-5%)',  opacity: 1,    offset: 0.55 },
+    { transform: 'translateY(2%)',   opacity: 1,    offset: 0.7 },
+    { transform: 'translateY(-1%)',  opacity: 1,    offset: 0.84 },
+    { transform: 'translateY(0.3%)', opacity: 1,    offset: 0.94 },
+    { transform: 'translateY(0)',    opacity: 1,    offset: 1 }
+  ];
+  const SPRING_IN_OPTIONS = {
+    duration: 1300,
+    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    fill: 'forwards'
+  };
+
+  const EXIT_KEYFRAMES = [
+    { transform: 'translateY(0)',     opacity: 1, offset: 0 },
+    { transform: 'translateY(-30%)',  opacity: 0.6, offset: 0.5 },
+    { transform: 'translateY(-110%)', opacity: 0, offset: 1 }
+  ];
+  const EXIT_OPTIONS = {
+    duration: 650,
+    easing: 'cubic-bezier(0.5, 0, 0.55, 0.2)',
+    fill: 'forwards'
+  };
+
+  const DWELL_MS = 2200;
+
+  // ─── 4. ROTATION LOOP ───
+  async function rotate() {
+    if (running) return;
+    running = true;
+
+    const exitAnim = live.animate(EXIT_KEYFRAMES, EXIT_OPTIONS);
+    await exitAnim.finished;
+
+    currentIndex = (currentIndex + 1) % WORDS.length;
+    live.textContent = WORDS[currentIndex];
+
+    const enterAnim = live.animate(SPRING_IN_KEYFRAMES, SPRING_IN_OPTIONS);
+    await enterAnim.finished;
+
+    await new Promise(r => setTimeout(r, DWELL_MS));
+
+    running = false;
+    rotate();
+  }
+
+  // ─── 5. INITIAL DELAY ───
+  setTimeout(() => {
+    live.style.transform = 'translateY(0)';
+    live.style.opacity = '1';
+    rotate();
+  }, 2400);
+})();
+
+</script>
+</body>
+</html>

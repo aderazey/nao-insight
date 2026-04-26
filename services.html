@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Services & Tarifs — Nao Insight</title>
+<meta name="description" content="Quatre formules claires pour créer votre site web professionnel. À partir de 390€." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================
+   STUDIO — Design System
+   Bold editorial · Type-driven · Dynamic
+   ============================================ */
+
+:root {
+  --ivory: #F5F1EA;
+  --ivory-deep: #EDE6D8;
+  --ink: #0E0E0E;
+  --ink-soft: #2B2B2B;
+  --ink-mute: #6B6660;
+  --orange: #FF3D71;
+  --orange-deep: #E02560;
+  --line: #0E0E0E1A;
+  --line-dark: #F5F1EA1F;
+
+  --serif: "Plus Jakarta Sans", "Inter Tight", -apple-system, sans-serif;
+  --display: "Space Grotesk", -apple-system, sans-serif;
+  --hero: "Plus Jakarta Sans", "Inter Tight", -apple-system, sans-serif;
+  --sans: "Inter Tight", -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+*::selection { background: var(--orange); color: var(--ivory); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+
+main, header, footer, nav { position: relative; z-index: 2; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(245, 241, 234, 0.82);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo .dot {
+  width: 8px; height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.4; } }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--orange);
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-links a.active { color: var(--ink); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 22px;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 100px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.nav-cta:hover { background: var(--orange); transform: translateY(-1px); }
+.nav-cta::after {
+  content: "→";
+  transition: transform 0.3s ease;
+  font-size: 14px;
+}
+.nav-cta:hover::after { transform: translateX(3px); }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--ivory);
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--orange);
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-primary:hover::before { transform: translateY(0); }
+.btn-primary > span { position: relative; z-index: 1; }
+.btn-primary .arrow { display: inline-block; transition: transform 0.4s ease; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: var(--ivory); }
+
+.btn-link {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.btn-link:hover { color: var(--orange); border-color: var(--orange); }
+.link-orange {
+  color: var(--orange);
+  border-bottom: 1.5px solid currentColor;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.link-orange:hover { opacity: 0.7; }
+
+/* ============================================
+   COMMON SECTION ELEMENTS
+   ============================================ */
+section { padding: 140px 0; position: relative; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--orange);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5.5vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  max-width: 18ch;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--orange);
+  font-weight: 500;
+}
+
+/* Decorative big numbers */
+.big-num {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(60px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--orange);
+}
+
+/* ============================================
+   MARQUEE (defilant tech)
+   ============================================ */
+.marquee {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 28px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 60px;
+  animation: scroll-marquee 28s linear infinite;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+}
+.marquee-track .dot-orange {
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@keyframes scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 100px 0 32px;
+  position: relative;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.footer-brand-logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-brand-logo .dot {
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+.footer-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.3;
+  max-width: 28ch;
+  color: rgba(245, 241, 234, 0.85);
+}
+
+.footer-col h5 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-col li {
+  font-size: 14px;
+  color: rgba(245, 241, 234, 0.7);
+  line-height: 1.5;
+}
+.footer-col li a {
+  font-size: 14px;
+  color: rgba(245, 241, 234, 0.7);
+  transition: color 0.3s ease;
+}
+.footer-col li a:hover { color: var(--orange); }
+.footer-address {
+  line-height: 1.4;
+}
+
+.footer-mega {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(56px, 13vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-align: center;
+  padding: 80px 0 40px;
+  color: var(--ivory);
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.footer-mega em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--orange);
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: rgba(245, 241, 234, 0.55);
+  font-family: var(--display);
+}
+.footer-bottom a { color: rgba(245, 241, 234, 0.55); transition: color 0.3s ease; }
+.footer-bottom a:hover { color: var(--orange); }
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .container { padding: 0 20px; }
+  nav { padding: 14px 20px; }
+  section { padding: 90px 0; }
+
+  .nav-links {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--ivory);
+    flex-direction: column;
+    padding: 32px 20px;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-200%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { font-size: 18px; }
+
+  .menu-toggle { display: block; }
+  .nav-cta { display: none; }
+
+  .footer-top { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
+}
+
+@media (max-width: 520px) {
+  .btn { padding: 16px 26px; font-size: 13px; }
+}
+
+</style>
+<style>
+/* ===== PAGE HERO ===== */
+.page-hero {
+  padding: 160px 0 80px;
+  border-bottom: 1px solid var(--line);
+}
+.page-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 32px;
+}
+.page-hero-meta::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--orange);
+}
+
+.page-hero h1 {
+  font-family: var(--hero);
+  font-weight: 400;
+  font-size: clamp(48px, 8vw, 124px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
+  max-width: 16ch;
+}
+.page-hero h1 em { font-style: italic; color: var(--orange); font-weight: 400; }
+
+.page-hero p {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+
+/* ===== TVA NOTE ===== */
+.tva-note {
+  margin-top: 48px;
+  padding: 16px 24px;
+  background: var(--ivory-deep);
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+}
+.tva-note::before {
+  content: "";
+  width: 8px; height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+/* ===== PRICING (4 formules) ===== */
+.pricing { padding: 100px 0; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.formule {
+  padding: 32px 28px 28px;
+  background: var(--ivory-deep);
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  min-height: 580px;
+  overflow: hidden;
+}
+.formule::before {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 4px;
+  background: var(--orange);
+  transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.formule:hover { transform: translateY(-8px); }
+.formule:hover::before { width: 100%; }
+
+.formule.featured {
+  background: var(--ink);
+  color: var(--ivory);
+}
+.formule.featured .formule-eyebrow { color: var(--orange); }
+.formule.featured .formule-divider { background: var(--line-dark); }
+.formule.featured .formule-feature { color: rgba(245, 241, 234, 0.85); }
+.formule.featured .formule-feature::before { background: var(--orange); }
+.formule.featured .formule-price-from { color: rgba(245, 241, 234, 0.55); }
+.formule.featured .formule-tag { color: rgba(245, 241, 234, 0.6); }
+
+.formule-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.formule-badge::before { content: "★"; }
+
+.formule-eyebrow {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.formule-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin-top: 4px;
+}
+.formule-name em { font-style: italic; }
+
+.formule-tag {
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.formule-divider {
+  height: 1px;
+  background: var(--line);
+}
+
+.formule-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+}
+.formule-feature {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  padding-left: 20px;
+  position: relative;
+}
+.formule-feature::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 8px; height: 2px;
+  background: var(--orange);
+}
+
+.formule-price-block { margin-top: auto; padding-top: 8px; }
+.formule-price-from {
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.formule-price {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.formule-price small {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-mute);
+  margin-left: 6px;
+}
+.formule.featured .formule-price small { color: rgba(245, 241, 234, 0.5); }
+
+.formule-cta {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 100px;
+  transition: background 0.3s ease;
+}
+.formule-cta:hover { background: var(--orange); }
+.formule.featured .formule-cta { background: var(--orange); color: var(--ivory); }
+.formule.featured .formule-cta:hover { background: var(--ivory); color: var(--ink); }
+
+/* ===== INCLUDED / FEATURES ===== */
+.included {
+  background: var(--ink);
+  color: var(--ivory);
+}
+.included .eyebrow { color: var(--ivory); }
+.included .section-title em { color: var(--orange); }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 80px;
+}
+
+.feature {
+  padding: 36px 32px;
+  background: rgba(245, 241, 234, 0.04);
+  border-radius: 6px;
+  border: 1px solid var(--line-dark);
+  transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+.feature:hover {
+  background: rgba(245, 241, 234, 0.07);
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--orange);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.feature h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+}
+.feature h3 em { font-style: italic; color: var(--orange); }
+
+.feature p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(245, 241, 234, 0.7);
+}
+
+/* ===== FAQ ===== */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-top: 1px solid var(--line);
+  padding: 0;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--line); }
+
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: var(--ink);
+  transition: color 0.3s ease;
+}
+.faq-q:hover { color: var(--orange); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ivory-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.faq-item.open .faq-icon { background: var(--orange); transform: rotate(45deg); color: var(--ivory); }
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.faq-a-inner {
+  padding: 0 0 32px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+.faq-item.open .faq-a { max-height: 400px; }
+
+/* ===== CTA SECTION ===== */
+.services-cta {
+  padding: 140px 0;
+  text-align: center;
+}
+.services-cta h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 100px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin-bottom: 32px;
+}
+.services-cta h2 em { font-style: italic; color: var(--orange); }
+.services-cta p {
+  font-size: 18px;
+  color: var(--ink-soft);
+  max-width: 50ch;
+  margin: 0 auto 48px;
+}
+.services-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .formule { min-height: auto; }
+}
+@media (max-width: 900px) {
+  .page-hero { padding: 110px 0 60px; }
+  .features-grid { grid-template-columns: 1fr; gap: 16px; }
+  .faq-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <span class="dot"></span>
+    Nao Insight
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="services.html" class="active">Services & Tarifs</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Démarrer un projet</a>
+  <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+</nav>
+
+<main>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-meta">Services & Tarifs</div>
+      <h1>Des formules claires, <em>sans surprise</em>.</h1>
+      <p>Trois offres pensées pour grandir avec votre activité, plus une option maintenance résiliable à tout moment. Le tarif annoncé est le tarif final — chaque ligne du devis est expliquée, rien n'est ajouté en cours de route.</p>
+      <div class="tva-note">Tarifs HT — TVA non applicable, art. 293 B du CGI</div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing reveal">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <div class="formule">
+          <div>
+            <div class="formule-eyebrow">Formule 01</div>
+            <h3 class="formule-name">Essentiel</h3>
+            <p class="formule-tag">Pour poser une base professionnelle rapidement</p>
+          </div>
+          <div class="formule-divider"></div>
+          <ul class="formule-features">
+            <li class="formule-feature">1 à 3 pages selon vos besoins</li>
+            <li class="formule-feature">Design responsive sur-mesure</li>
+            <li class="formule-feature">Référencement local (Google Business)</li>
+            <li class="formule-feature">Formulaire de contact connecté à votre email</li>
+            <li class="formule-feature">Mentions légales + RGPD rédigées</li>
+            <li class="formule-feature">Hébergement & nom de domaine offerts (1 an)</li>
+            <li class="formule-feature">Livraison en 5 jours ouvrés</li>
+          </ul>
+          <div class="formule-price-block">
+            <div class="formule-price-from">Tarif</div>
+            <div class="formule-price">690 €<small>HT</small></div>
+            <a href="contact.html?formule=essentiel" class="formule-cta">Choisir Essentiel →</a>
+          </div>
+        </div>
+
+        <div class="formule featured">
+          <div class="formule-badge">Recommandé</div>
+          <div>
+            <div class="formule-eyebrow">Formule 02</div>
+            <h3 class="formule-name">Signature</h3>
+            <p class="formule-tag">Pour un site qui reflète pleinement votre univers</p>
+          </div>
+          <div class="formule-divider"></div>
+          <ul class="formule-features">
+            <li class="formule-feature">4 pages : Accueil, Services, À propos, Contact</li>
+            <li class="formule-feature">Tout l'Essentiel inclus</li>
+            <li class="formule-feature">Page À propos rédigée pour vous</li>
+            <li class="formule-feature">Création de logo offerte</li>
+            <li class="formule-feature">Interface CMS pour modifier vos textes</li>
+            <li class="formule-feature">Conseils stratégiques personnalisés</li>
+            <li class="formule-feature">Livraison en 7 jours ouvrés</li>
+          </ul>
+          <div class="formule-price-block">
+            <div class="formule-price-from">Tarif</div>
+            <div class="formule-price">990 €<small>HT</small></div>
+            <a href="contact.html?formule=signature" class="formule-cta">Choisir Signature →</a>
+          </div>
+        </div>
+
+        <div class="formule">
+          <div>
+            <div class="formule-eyebrow">Formule 03</div>
+            <h3 class="formule-name">Sur <em>mesure</em></h3>
+            <p class="formule-tag">Pour des besoins spécifiques et une approche personnalisée</p>
+          </div>
+          <div class="formule-divider"></div>
+          <ul class="formule-features">
+            <li class="formule-feature">5+ pages, blog, espace membre, e-commerce…</li>
+            <li class="formule-feature">Tout le Signature inclus</li>
+            <li class="formule-feature">Fonctionnalités spécifiques (réservation, calculateur, devis)</li>
+            <li class="formule-feature">Intégrations CRM ou outils tiers</li>
+            <li class="formule-feature">Refonte complète d'un site existant</li>
+            <li class="formule-feature">Audit SEO approfondi</li>
+            <li class="formule-feature">Devis détaillé sous 48 h</li>
+          </ul>
+          <div class="formule-price-block">
+            <div class="formule-price-from">À partir de</div>
+            <div class="formule-price">1 290 €<small>HT</small></div>
+            <a href="contact.html?formule=sur-mesure" class="formule-cta">Demander un devis →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Sans engagement <span class="dot-orange"></span> Sans frais cachés <span class="dot-orange"></span> Sans abonnement obligatoire <span class="dot-orange"></span> Premier échange offert <span class="dot-orange"></span> Devis sous 48h <span class="dot-orange"></span></span>
+      <span>Sans engagement <span class="dot-orange"></span> Sans frais cachés <span class="dot-orange"></span> Sans abonnement obligatoire <span class="dot-orange"></span> Premier échange offert <span class="dot-orange"></span> Devis sous 48h <span class="dot-orange"></span></span>
+    </div>
+  </div>
+
+  <!-- INCLUDED -->
+  <section class="included reveal">
+    <div class="container">
+      <span class="eyebrow">Le socle commun — 02</span>
+      <h2 class="section-title">Le standard est <em>haut</em>, peu importe la formule.</h2>
+
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">⊡</div>
+          <h3>Lisible <em>partout</em></h3>
+          <p>Mobile, tablette, ordinateur, grand écran. Votre site s'adapte sans bavure, sans zoom forcé, sans menu cassé. Testé sur tous les formats avant la mise en ligne.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Rapide à <em>charger</em></h3>
+          <p>Un site lent perd la moitié de ses visiteurs en 3 secondes. Le vôtre s'affiche en moins d'une — code optimisé, images compressées, hébergement performant.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">◐</div>
+          <h3>Pensé pour <em>tous</em></h3>
+          <p>Contrastes vérifiés, navigation au clavier, structure claire pour les lecteurs d'écran. Votre site est accessible aux personnes en situation de handicap.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚿</div>
+          <h3>Sécurisé <em>par défaut</em></h3>
+          <p>Connexion chiffrée HTTPS, certificat renouvelé automatiquement. Vos visiteurs voient le cadenas dans leur navigateur — la base de la confiance en ligne.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚖</div>
+          <h3>Conforme <em>au RGPD</em></h3>
+          <p>Mentions légales et politique de confidentialité rédigées sur-mesure pour votre activité. Aucun cookie de pistage ajouté à votre insu.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⌂</div>
+          <h3>Hébergement & nom de domaine <em>offerts</em></h3>
+          <p>Hébergement professionnel et nom de domaine inclus pendant 12 mois. Au-delà, vous payez directement votre hébergeur (~10 €/mois) — vous gardez le contrôle, je n'enferme personne.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAINTENANCE OPTION -->
+  <section class="reveal" style="padding: 100px 0; background: var(--ivory-deep);">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+        <div>
+          <span class="eyebrow">Option maintenance — 03</span>
+          <h2 class="section-title" style="font-size: clamp(32px,4vw,56px); max-width: 20ch;">Une <em>tranquillité</em> mensuelle, sans engagement.</h2>
+        </div>
+        <div style="padding-top: 56px;">
+          <p style="font-size: 17px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 32px;">
+            Votre site reste à jour, sauvegardé et performant — sans que vous ayez à y penser. Mises à jour techniques, sauvegardes hebdomadaires, modifications mineures (textes, prix, horaires, photos), suivi de votre référencement et rapport mensuel envoyé par email. <strong>Résiliable d'un mois sur l'autre</strong>, à tout moment.
+          </p>
+          <div style="display: inline-flex; align-items: baseline; gap: 12px; padding: 24px 32px; background: var(--ink); color: var(--ivory); border-radius: 100px;">
+            <span style="font-family: var(--display); font-weight: 500; font-size: 32px; letter-spacing: -0.02em;">49 €</span>
+            <span style="font-family: var(--display); font-size: 13px; color: rgba(245,241,234,0.6);">/ mois HT — sans engagement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>@media (max-width: 900px){ section.reveal > .container > div { grid-template-columns: 1fr !important; gap: 32px !important; } }</style>
+  </section>
+
+  <!-- FAQ -->
+  <section class="reveal" style="padding: 140px 0;">
+    <div class="container">
+      <div class="faq-grid">
+        <div>
+          <span class="eyebrow">Questions — 04</span>
+          <h2 class="section-title" style="font-size: clamp(36px,5vw,64px);">Une question avant de <em>choisir</em> ?</h2>
+          <p style="margin-top: 32px; color: var(--ink-soft); font-size: 16px; line-height: 1.55;">Premier échange offert pour comprendre votre projet et vous orienter vers la bonne formule.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q">Combien de temps prend la création ?<span class="faq-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">5 jours ouvrés pour la formule Essentiel, 7 jours ouvrés pour Signature, et de quelques semaines à un mois pour le Sur-mesure selon la complexité. Tout dépend de votre réactivité sur les retours et de la portée du projet — je vous donne un planning précis dès le devis.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Faut-il fournir les textes et photos ?<span class="faq-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Pour la formule Essentiel, oui — je vous guide avec un brief structuré pour vous aider à formaliser ce que vous voulez dire. Pour la formule Signature, la rédaction de la page À propos est incluse, et je vous accompagne sur le reste. Côté photos, je peux aussi générer des visuels IA personnalisés ou utiliser des banques d'images premium.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Que se passe-t-il après la mise en ligne ?<span class="faq-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Vous repartez avec votre site, votre nom de domaine, vos accès. Vous êtes libre. Si vous voulez de la tranquillité, l'option maintenance à 49€/mois prend en charge mises à jour, sauvegardes et petites modifications.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Puis-je modifier mon site moi-même ?<span class="faq-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Oui — à partir de la formule Signature, vous avez une interface d'administration en français qui vous permet de modifier textes, images, prix et horaires sans toucher au code. Une formation à la prise en main est incluse. Sur l'Essentiel, c'est disponible en option.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Et si je ne suis pas sûr·e de la formule à choisir ?<span class="faq-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Le premier échange est fait pour ça. 30 minutes ensemble pour comprendre votre activité, votre temps disponible, votre rapport à la technique — et je vous oriente honnêtement, même si ça veut dire la formule la moins chère.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Puis-je payer en plusieurs fois ?<span class="faq-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Oui. Le règlement se fait en 3 fois sans frais : 30 % à la commande, 30 % à la validation des maquettes, 40 % à la mise en ligne.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="services-cta reveal">
+    <div class="container">
+      <h2>Prêt·e à <em>franchir le pas</em> ?</h2>
+      <p>Discutons de votre projet. Premier échange offert, sans engagement, par téléphone ou visio.</p>
+      <div class="services-cta-buttons">
+        <a href="contact.html" class="btn btn-primary">
+          <span>Démarrer mon projet</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="a-propos.html" class="btn btn-outline">
+          <span>En savoir plus sur moi</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-logo"><span class="dot"></span>Nao Insight</div>
+        <p class="footer-tagline">Sites web pour indépendants, artisans et auto-entrepreneurs. <em style="color:var(--orange)">Clairs, élégants, efficaces.</em></p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services & Tarifs</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:contact@nao-insight.fr">contact@nao-insight.fr</a></li>
+          <li><a href="tel:+33661204787">06 61 20 47 87</a></li>
+          <li class="footer-address">7 Rue des Peupliers<br>92130 Issy-les-Moulineaux</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="cgv.html">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-mega">Nao Insight<em>.</em></div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Nao Insight. Tous droits réservés.</div>
+      <div>Made with care · in France 🇫🇷</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Magnetic hover on .magnetic elements
+document.querySelectorAll('.magnetic').forEach(el => {
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'translate(0, 0)';
+  });
+});
+
+// Rotating word animation (hero H1) — using Web Animations API
+// for guaranteed per-cycle animation reset.
+(function initRotatingWord() {
+  const container = document.querySelector('.rotating-word');
+  if (!container) return;
+
+  // The list of words to cycle through
+  const WORDS = ['clair', 'brandé', 'élégant', 'performant', 'efficace'];
+
+  // Measurement element used at init to lock the container width
+  const measure = container.querySelector('.rotating-word__measure');
+  if (!measure) return;
+
+  // ─── 1. MEASURE: lock to the WIDEST word ───
+  function lockWidth() {
+    let maxW = 0;
+    WORDS.forEach(w => {
+      measure.textContent = w;
+      const width = measure.getBoundingClientRect().width;
+      if (width > maxW) maxW = width;
+    });
+    // +20px safety margin: at large font sizes (up to 144px) some glyphs
+    // (especially "f", "p" in weight 500) overshoot their measured box
+    // by several pixels. Generous margin prevents right-edge clipping.
+    container.style.width = Math.ceil(maxW + 20) + 'px';
+    container.style.height = measure.getBoundingClientRect().height + 'px';
+  }
+
+  lockWidth();
+  window.addEventListener('resize', lockWidth);
+
+  // ─── 2. CREATE the live word element ───
+  measure.style.display = 'none';
+  const live = document.createElement('span');
+  live.className = 'rotating-word__current';
+  live.textContent = WORDS[0];
+  container.appendChild(live);
+
+  // ─── 2b. PIXEL-PERFECT BASELINE ALIGNMENT ───
+  // Browsers calculate flex item baselines unpredictably when items have
+  // different padding/margin. Instead of guessing offsets, we measure the
+  // actual rendered Y-position of the bottom of "Un site" and the bottom
+  // of the rotating word, then translate the prefix by the exact difference.
+  function alignBaselines() {
+    const prefix = document.querySelector('.rotating-prefix');
+    if (!prefix) return;
+
+    // Reset any previous offset so measurements are pure
+    prefix.style.transform = '';
+
+    // Force layout to settle
+    void prefix.offsetHeight;
+
+    // We compare baseline-equivalent positions: the bottom edge of the
+    // visible glyphs of each element. Since both use the same font and
+    // line-height, comparing bottom-of-content is reliable.
+    const prefixRect = prefix.getBoundingClientRect();
+    const liveRect = live.getBoundingClientRect();
+
+    // Difference in vertical position (positive = prefix is higher than word)
+    const offset = liveRect.bottom - prefixRect.bottom;
+
+    // Apply correction: move prefix down by the exact offset
+    if (Math.abs(offset) > 0.5) {
+      prefix.style.transform = `translateY(${offset}px)`;
+    }
+  }
+
+  // Run baseline alignment after layout has fully settled
+  // (fonts loaded, flex items rendered)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      requestAnimationFrame(alignBaselines);
+    });
+  } else {
+    requestAnimationFrame(() => requestAnimationFrame(alignBaselines));
+  }
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(alignBaselines);
+  });
+
+  // Respect reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let currentIndex = 0;
+  let running = false;
+
+  // ─── 3. ANIMATION KEYFRAMES (smoother spring) ───
+  const SPRING_IN_KEYFRAMES = [
+    { transform: 'translateY(105%)', opacity: 0,    offset: 0 },
+    { transform: 'translateY(40%)',  opacity: 0.4,  offset: 0.18 },
+    { transform: 'translateY(-3%)',  opacity: 1,    offset: 0.45 },
+    { transform: 'translateY(-5%)',  opacity: 1,    offset: 0.55 },
+    { transform: 'translateY(2%)',   opacity: 1,    offset: 0.7 },
+    { transform: 'translateY(-1%)',  opacity: 1,    offset: 0.84 },
+    { transform: 'translateY(0.3%)', opacity: 1,    offset: 0.94 },
+    { transform: 'translateY(0)',    opacity: 1,    offset: 1 }
+  ];
+  const SPRING_IN_OPTIONS = {
+    duration: 1300,
+    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    fill: 'forwards'
+  };
+
+  const EXIT_KEYFRAMES = [
+    { transform: 'translateY(0)',     opacity: 1, offset: 0 },
+    { transform: 'translateY(-30%)',  opacity: 0.6, offset: 0.5 },
+    { transform: 'translateY(-110%)', opacity: 0, offset: 1 }
+  ];
+  const EXIT_OPTIONS = {
+    duration: 650,
+    easing: 'cubic-bezier(0.5, 0, 0.55, 0.2)',
+    fill: 'forwards'
+  };
+
+  const DWELL_MS = 2200;
+
+  // ─── 4. ROTATION LOOP ───
+  async function rotate() {
+    if (running) return;
+    running = true;
+
+    const exitAnim = live.animate(EXIT_KEYFRAMES, EXIT_OPTIONS);
+    await exitAnim.finished;
+
+    currentIndex = (currentIndex + 1) % WORDS.length;
+    live.textContent = WORDS[currentIndex];
+
+    const enterAnim = live.animate(SPRING_IN_KEYFRAMES, SPRING_IN_OPTIONS);
+    await enterAnim.finished;
+
+    await new Promise(r => setTimeout(r, DWELL_MS));
+
+    running = false;
+    rotate();
+  }
+
+  // ─── 5. INITIAL DELAY ───
+  setTimeout(() => {
+    live.style.transform = 'translateY(0)';
+    live.style.opacity = '1';
+    rotate();
+  }, 2400);
+})();
+
+</script>
+<script>
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
