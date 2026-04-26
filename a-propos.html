@@ -564,30 +564,25 @@ footer {
 
 /* ===== STORY ===== */
 .story-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 64px;
+  align-items: center;
 }
 
 .story-portrait {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
+  width: 100%;
+  border-radius: 6px;
   overflow: hidden;
-  flex-shrink: 0;
 }
 .story-portrait img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 15%;
+  height: auto;
   display: block;
 }
 
 .story-content {
-  max-width: 720px;
-  text-align: center;
+  text-align: left;
 }
 .story-content h2 {
   font-family: var(--serif);
