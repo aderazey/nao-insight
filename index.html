@@ -1307,13 +1307,10 @@ footer {
   .hero-decoration { display: none; }
   .hero-stats { grid-template-columns: 1fr; gap: 28px; }
 
-  /* Rotating line: reduce size and stack on small screens */
+  /* Rotating line: scale down for tablets */
   .hero-headline .rotating-line {
-    font-size: clamp(36px, 8vw, 56px);
-    margin-top: 12px;
-  }
-  .hero-headline .rotating-line__block {
-    gap: 0.25em;
+    font-size: clamp(32px, 7.5vw, 56px);
+    margin-top: 10px;
   }
 
   .problem-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1335,17 +1332,22 @@ footer {
 }
 
 @media (max-width: 520px) {
-  /* Extra small: stack "Un site" above the adjective */
+  /* On small phones, the rotating line must fit on one line.
+     "Un site performant" is the longest combo (~18 chars).
+     At 350px usable width, we need font-size ≈ 350/18*1.8 ≈ 35px max.
+     Using 8.5vw on a 390px screen = 33px — perfect. */
+  .hero-headline {
+    font-size: clamp(32px, 8.5vw, 48px);
+  }
   .hero-headline .rotating-line {
-    font-size: clamp(32px, 10vw, 48px);
+    font-size: clamp(28px, 8.5vw, 44px);
+    margin-top: 6px;
   }
   .hero-headline .rotating-line__block {
-    flex-direction: column;
-    gap: 0;
-    align-items: flex-start;
+    gap: 0.25em;
   }
   .hero-headline .rotating-prefix {
-    transform: none !important; /* override JS baseline alignment */
+    transform: none !important;
   }
   .process-steps { grid-template-columns: 1fr; }
 }
